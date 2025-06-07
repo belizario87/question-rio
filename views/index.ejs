@@ -1,7 +1,19 @@
 <%- include('partials/header.ejs') %>
 <body>
   <%- include('partials/navbar.ejs') %>
-  <h1>Estilo do bootstrap</h1>
 
-  <%- include('partials/footer.ejs') %>
+  <h1 class="mt-4 ms-3">Perguntas</h1>
+
+  <% if (questions && questions.length > 0) { %>
+  <ul class="list-group mt-4">
+    <% questions.forEach(function(q) { %>
+    <li class="list-group-item mt-2">
+      <strong><%= q.titulo %></strong><br />
+      <%= q.descricao %>
+    </li>
+    <% }) %>
+  </ul>
+  <% } else { %>
+  <p class="mt-4">Nenhuma pergunta cadastrada.</p>
+  <% } %> <%- include('partials/footer.ejs') %>
 </body>
