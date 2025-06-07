@@ -22,22 +22,9 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//Rotas
-app.get("/", (req, res) => {
-  res.render("index");
-});
+const questionRoutes = require("./routes/questionRoutes");
 
-app.get("/fazerpergunta", (req, res) => {
-  res.render("pergunta");
-});
-
-app.post("/salvarpergunta", (req, res) => {
-  var titulo = req.body.titulo;
-  var descricao = req.body.descricao;
-  res.send(
-    "Formulario recebido! titulo " + titulo + " " + "descricao " + descricao
-  );
-});
+app.use("/", questionRoutes);
 
 const PORT = 8787;
 
