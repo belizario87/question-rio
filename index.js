@@ -28,8 +28,9 @@ app.post("/salvarpergunta", (req, res) => {
   );
 });
 
-const PORT = 8787;
+require("dotenv").config();
+const PORT = process.env.PORT || 8787;
 
 app.listen(PORT, function () {
-  console.log(`servidor rodando na porta ${PORT}`);
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
