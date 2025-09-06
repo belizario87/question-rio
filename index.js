@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -26,7 +27,7 @@ const questionRoutes = require("./routes/questionRoutes");
 
 app.use("/", questionRoutes);
 
-const PORT = 8787;
+const PORT = process.env.PORT || 8787;
 
 app.listen(PORT, function () {
   console.log(`servidor rodando na porta ${PORT}`);

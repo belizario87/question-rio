@@ -11,8 +11,20 @@ const Question = connection.define("Question", {
     type: DataTypes.TEXT,
     allowNull: false,
   },
+  likes: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+    allowNull: false,
+  },
 });
 
-Question.sync();
+// Altere para evitar o DROP TABLE
+Question.sync({ alter: true })
+  .then(() => {
+    console.log("Tabela Questions sincronizada com sucesso!");
+  })
+  .catch((error) => {
+    console.error("Erro ao sincronizar tabela Questions:", error);
+  });
 
 module.exports = Question;

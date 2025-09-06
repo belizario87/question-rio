@@ -1,14 +1,19 @@
+require("dotenv").config();
 const Sequelize = require("sequelize");
 
-const connection = new Sequelize("perguntasrio", "root", "senha123", {
-  host: "localhost",
-  dialect: "mysql",
-  logging: console.log, // Isso vai mostrar as queries SQL no console
-  define: {
-    timestamps: true, // Isso garante que createdAt e updatedAt serão usados
-    underscored: true, // Usa snake_case em vez de camelCase para nomes de colunas
-  },
-});
+const connection = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
+    define: {
+      timestamps: true, // Isso garante que createdAt e updatedAt serão usados
+      underscored: true, // Usa snake_case em vez de camelCase para nomes de colunas
+    },
+  }
+);
 
 module.exports = connection;
 
